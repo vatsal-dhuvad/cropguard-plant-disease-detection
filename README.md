@@ -1,3 +1,14 @@
+---
+title: CropGuard Plant Disease Backend
+emoji: 🌱
+colorFrom: green
+colorTo: blue
+sdk: docker
+app_port: 7860
+pinned: false
+license: mit
+---
+
 # CropGuard - Plant Disease Detection System
 
 CropGuard is a full-stack plant disease detection project for college/mentor demonstration. It lets users register, upload or capture plant leaf images, run AI-based disease detection, and view scan history with treatment and prevention suggestions.

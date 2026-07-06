@@ -40,6 +40,15 @@ Then update Vercel:
 REACT_APP_API_BASE_URL=https://<your-space-subdomain>.hf.space
 ```
 
+Helper script:
+
+```powershell
+$env:HF_TOKEN="your_huggingface_token"
+$env:HF_USERNAME="your_huggingface_username"
+$env:DATABASE_URL="postgresql://postgres:<password>@db.ieukhjamaysxsmtigbfd.supabase.co:5432/postgres"
+.\scripts\deploy-huggingface-backend.ps1
+```
+
 ## Render Backend Environment Variables
 
 Set these on Render:
