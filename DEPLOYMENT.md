@@ -9,6 +9,13 @@
 
 Supabase is used as the database. It does not run the Django, Flask, or TensorFlow backend.
 
+## Current Project Links
+
+- GitHub: https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
+- Vercel frontend: https://cropguard-plant-disease-detection.vercel.app
+- Render blueprint: https://render.com/deploy?repo=https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
+- Supabase project ref: `ieukhjamaysxsmtigbfd`
+
 ## Backend Environment Variables
 
 Set these on Render:
@@ -19,7 +26,7 @@ SECRET_KEY=<generated secret>
 ALLOWED_HOSTS=<your-render-host>
 CORS_ALLOWED_ORIGINS=https://<your-vercel-app>
 CSRF_TRUSTED_ORIGINS=https://<your-vercel-app>
-DATABASE_URL=postgresql://postgres:<password>@db.<supabase-ref>.supabase.co:5432/postgres
+DATABASE_URL=postgresql://postgres:<password>@db.ieukhjamaysxsmtigbfd.supabase.co:5432/postgres
 FLASK_SERVICE_URL=http://localhost:5000
 SESSION_COOKIE_SECURE=True
 SESSION_COOKIE_SAMESITE=None

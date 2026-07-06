@@ -10,6 +10,13 @@ CropGuard is a full-stack plant disease detection project for college/mentor dem
 - Database: SQLite for local demo, Supabase Postgres for production
 - Deployment target: Vercel frontend, Render backend, Supabase database
 
+## Live Links
+
+- GitHub Repository: https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
+- Frontend Preview: https://cropguard-plant-disease-detection.vercel.app
+- Render Backend Blueprint: https://render.com/deploy?repo=https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
+- Supabase Project Ref: `ieukhjamaysxsmtigbfd`
+
 ## Main Features
 
 - User registration and login
@@ -87,6 +94,10 @@ Recommended production setup:
 - Supabase provides the Postgres database.
 
 See `DEPLOYMENT.md` and `render.yaml` for deployment configuration.
+
+Deploy backend blueprint:
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection)
 
 ## Environment Files
 
