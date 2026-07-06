@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
   // Configure axios defaults
   axios.defaults.baseURL = API_BASE_URL;
   axios.defaults.withCredentials = true;
+  axios.defaults.headers.common['bypass-tunnel-reminder'] = 'true';
 
   useEffect(() => {
     checkAuthStatus();

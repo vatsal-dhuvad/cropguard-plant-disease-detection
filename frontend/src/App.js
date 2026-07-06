@@ -18,6 +18,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 // Configure axios
 axios.defaults.baseURL = API_BASE_URL;
 axios.defaults.withCredentials = true;
+axios.defaults.headers.common['bypass-tunnel-reminder'] = 'true';
 
 function AppRoutes() {
   const { user, loading } = useAuth();

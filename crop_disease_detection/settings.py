@@ -150,6 +150,7 @@ CORS_ALLOW_HEADERS = [
     'content-type',
     'dnt',
     'origin',
+    'bypass-tunnel-reminder',
     'user-agent',
     'x-csrftoken',
     'x-requested-with',
