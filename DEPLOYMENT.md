@@ -13,8 +13,7 @@ Supabase is used as the database. It does not run the Django, Flask, or TensorFl
 
 - GitHub: https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
 - Vercel frontend: https://cropguard-plant-disease-detection.vercel.app
-- Temporary backend tunnel: https://cropguard-vatsal-demo.loca.lt
-- Hugging Face backend: pending Space deployment
+- Hugging Face backend: https://vatsal765-cropguard-plant-disease-backend.hf.space
 - Render blueprint: https://render.com/deploy?repo=https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
 - Supabase project ref: `ieukhjamaysxsmtigbfd`
 
@@ -23,7 +22,7 @@ Supabase is used as the database. It does not run the Django, Flask, or TensorFl
 Create a Docker Space and push this repository. Set these Space variables/secrets:
 
 ```text
-DATABASE_URL=postgresql://postgres:<password>@db.ieukhjamaysxsmtigbfd.supabase.co:5432/postgres
+DATABASE_URL=postgresql://postgres.ieukhjamaysxsmtigbfd:<password>@aws-1-ap-south-1.pooler.supabase.com:6543/postgres?sslmode=require
 SECRET_KEY=<generated secret>
 DEBUG=False
 ALLOWED_HOSTS=*
@@ -34,10 +33,12 @@ SESSION_COOKIE_SECURE=True
 SESSION_COOKIE_SAMESITE=None
 ```
 
+Use the Supabase pooler URL for Hugging Face. The direct database host only returns an IPv6 address for this project and can fail on Hugging Face with `Network is unreachable`.
+
 Then update Vercel:
 
 ```text
-REACT_APP_API_BASE_URL=https://<your-space-subdomain>.hf.space
+REACT_APP_API_BASE_URL=https://vatsal765-cropguard-plant-disease-backend.hf.space
 ```
 
 Helper script:
@@ -45,7 +46,7 @@ Helper script:
 ```powershell
 $env:HF_TOKEN="your_huggingface_token"
 $env:HF_USERNAME="your_huggingface_username"
-$env:DATABASE_URL="postgresql://postgres:<password>@db.ieukhjamaysxsmtigbfd.supabase.co:5432/postgres"
+$env:DATABASE_URL="postgresql://postgres.ieukhjamaysxsmtigbfd:<password>@aws-1-ap-south-1.pooler.supabase.com:6543/postgres?sslmode=require"
 .\scripts\deploy-huggingface-backend.ps1
 ```
 
@@ -59,7 +60,7 @@ SECRET_KEY=<generated secret>
 ALLOWED_HOSTS=<your-render-host>
 CORS_ALLOWED_ORIGINS=https://<your-vercel-app>
 CSRF_TRUSTED_ORIGINS=https://<your-vercel-app>
-DATABASE_URL=postgresql://postgres:<password>@db.ieukhjamaysxsmtigbfd.supabase.co:5432/postgres
+DATABASE_URL=postgresql://postgres.ieukhjamaysxsmtigbfd:<password>@aws-1-ap-south-1.pooler.supabase.com:6543/postgres?sslmode=require
 FLASK_SERVICE_URL=http://localhost:5000
 SESSION_COOKIE_SECURE=True
 SESSION_COOKIE_SAMESITE=None
@@ -72,7 +73,7 @@ EMAIL_HOST_PASSWORD=
 Set this on Vercel:
 
 ```text
-REACT_APP_API_BASE_URL=https://<your-render-backend>
+REACT_APP_API_BASE_URL=https://vatsal765-cropguard-plant-disease-backend.hf.space
 ```
 
 ## Local Run

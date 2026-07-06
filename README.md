@@ -19,7 +19,7 @@ CropGuard is a full-stack plant disease detection project for college/mentor dem
 - Backend API: Django, Django REST Framework
 - ML service: Flask, TensorFlow/Keras
 - Database: SQLite for local demo, Supabase Postgres for production
-- Deployment target: Vercel frontend, Render backend, Supabase database
+- Deployment target: Vercel frontend, Hugging Face Spaces Docker backend, Supabase database
 
 Zero-cost backend target for this ML project:
 
@@ -29,9 +29,8 @@ Zero-cost backend target for this ML project:
 
 - GitHub Repository: https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
 - Frontend Preview: https://cropguard-plant-disease-detection.vercel.app
-- Temporary Backend Tunnel: https://cropguard-vatsal-demo.loca.lt
 - Render Backend Blueprint: https://render.com/deploy?repo=https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
-- Hugging Face Backend: pending Space deployment
+- Hugging Face Backend: https://vatsal765-cropguard-plant-disease-backend.hf.space
 - Supabase Project Ref: `ieukhjamaysxsmtigbfd`
 
 ## Main Features
@@ -116,7 +115,7 @@ Password: DemoPass123
 Recommended production setup:
 
 - Vercel hosts the React frontend.
-- Render hosts the Django backend and local Flask ML service.
+- Hugging Face Spaces hosts the Django backend and local Flask ML service for the zero-cost mentor demo.
 - Supabase provides the Postgres database.
 
 See `DEPLOYMENT.md` and `render.yaml` for deployment configuration.
