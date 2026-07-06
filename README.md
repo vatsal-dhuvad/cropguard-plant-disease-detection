@@ -10,12 +10,17 @@ CropGuard is a full-stack plant disease detection project for college/mentor dem
 - Database: SQLite for local demo, Supabase Postgres for production
 - Deployment target: Vercel frontend, Render backend, Supabase database
 
+Zero-cost backend target for this ML project:
+
+- Hugging Face Spaces Docker backend, because it provides enough free CPU/RAM for TensorFlow demos.
+
 ## Live Links
 
 - GitHub Repository: https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
 - Frontend Preview: https://cropguard-plant-disease-detection.vercel.app
 - Temporary Backend Tunnel: https://cropguard-vatsal-demo.loca.lt
 - Render Backend Blueprint: https://render.com/deploy?repo=https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
+- Hugging Face Backend: pending Space deployment
 - Supabase Project Ref: `ieukhjamaysxsmtigbfd`
 
 ## Main Features

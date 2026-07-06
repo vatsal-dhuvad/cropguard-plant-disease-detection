@@ -3,7 +3,7 @@
 ## Recommended Production Shape
 
 - Frontend: Vercel
-- Backend: Render web service
+- Backend: Hugging Face Spaces Docker for zero-cost ML demo, or Render paid/larger instance for production
 - Database: Supabase Postgres
 - ML model: bundled with backend service as `models/trained_modelNew.h5`
 
@@ -14,10 +14,33 @@ Supabase is used as the database. It does not run the Django, Flask, or TensorFl
 - GitHub: https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
 - Vercel frontend: https://cropguard-plant-disease-detection.vercel.app
 - Temporary backend tunnel: https://cropguard-vatsal-demo.loca.lt
+- Hugging Face backend: pending Space deployment
 - Render blueprint: https://render.com/deploy?repo=https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
 - Supabase project ref: `ieukhjamaysxsmtigbfd`
 
-## Backend Environment Variables
+## Hugging Face Spaces Backend
+
+Create a Docker Space and push this repository. Set these Space variables/secrets:
+
+```text
+DATABASE_URL=postgresql://postgres:<password>@db.ieukhjamaysxsmtigbfd.supabase.co:5432/postgres
+SECRET_KEY=<generated secret>
+DEBUG=False
+ALLOWED_HOSTS=*
+CORS_ALLOWED_ORIGINS=https://cropguard-plant-disease-detection.vercel.app
+CSRF_TRUSTED_ORIGINS=https://cropguard-plant-disease-detection.vercel.app
+FLASK_SERVICE_URL=http://127.0.0.1:5000
+SESSION_COOKIE_SECURE=True
+SESSION_COOKIE_SAMESITE=None
+```
+
+Then update Vercel:
+
+```text
+REACT_APP_API_BASE_URL=https://<your-space-subdomain>.hf.space
+```
+
+## Render Backend Environment Variables
 
 Set these on Render:
 
