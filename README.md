@@ -14,6 +14,7 @@ CropGuard is a full-stack plant disease detection project for college/mentor dem
 
 - GitHub Repository: https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
 - Frontend Preview: https://cropguard-plant-disease-detection.vercel.app
+- Temporary Backend Tunnel: https://cropguard-vatsal-demo.loca.lt
 - Render Backend Blueprint: https://render.com/deploy?repo=https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
 - Supabase Project Ref: `ieukhjamaysxsmtigbfd`
 
@@ -74,6 +75,15 @@ Preview:
 
 ```text
 http://localhost:3000
+```
+
+### One-Command Preview Restart
+
+After the frontend has been built once, this script restarts Flask, Django, the local static frontend, and the public tunnel used by Vercel:
+
+```powershell
+cd "C:\Users\vatsa\OneDrive\Desktop\001 7th sem project"
+.\scripts\start-preview.ps1
 ```
 
 ## Demo Login

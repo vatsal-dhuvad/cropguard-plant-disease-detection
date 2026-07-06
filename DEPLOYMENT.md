@@ -13,6 +13,7 @@ Supabase is used as the database. It does not run the Django, Flask, or TensorFl
 
 - GitHub: https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
 - Vercel frontend: https://cropguard-plant-disease-detection.vercel.app
+- Temporary backend tunnel: https://cropguard-vatsal-demo.loca.lt
 - Render blueprint: https://render.com/deploy?repo=https://github.com/vatsal-dhuvad/cropguard-plant-disease-detection
 - Supabase project ref: `ieukhjamaysxsmtigbfd`
 
