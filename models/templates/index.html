@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plant Disease Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🌿 Plant Disease Detection</h1>
+    
+    <div class="main-content">
+      <!-- File Upload Section -->
+      <div class="upload-section">
+        <h2>📁 Upload Image</h2>
+        <form id="upload-form">
+          <div class="file-input-wrapper">
+            <input type="file" id="file-input" accept="image/*" required />
+            <label for="file-input" class="file-label">Choose File</label>
+          </div>
+          <button type="submit" class="btn btn-primary">🔍 Analyze Image</button>
+        </form>
+      </div>
+
+      <!-- Camera Section -->
+      <div class="camera-section">
+        <h2>📷 Take Photo</h2>
+        <div id="camera-container">
+          <div class="camera-controls">
+            <button type="button" id="start-camera-btn" class="btn btn-secondary">📹 Start Camera</button>
+            <button type="button" id="stop-camera-btn" class="btn btn-secondary" style="display:none;">⏹️ Stop Camera</button>
+          </div>
+          
+          <div class="camera-view">
+            <video id="camera" autoplay playsinline muted></video>
+            <canvas id="canvas" style="display:none;"></canvas>
+          </div>
+          
+          <div class="capture-controls" style="display:none;">
+            <button type="button" id="capture-btn" class="btn btn-primary">📸 Capture Photo</button>
+            <button type="button" id="retake-btn" class="btn btn-secondary">🔄 Retake</button>
+          </div>
+          
+          <div id="captured-preview" class="captured-preview" style="display:none;">
+            <h3>📸 Captured Photo</h3>
+            <img id="preview-image" alt="Captured photo" />
+            <div class="preview-actions">
+              <button type="button" id="analyze-captured-btn" class="btn btn-primary">🔍 Analyze Photo</button>
+              <button type="button" id="new-photo-btn" class="btn btn-secondary">📷 New Photo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="result" class="result-section"></div>
+    
+    <!-- Loading Indicator -->
+    <div id="loading" class="loading" style="display:none;">
+      <div class="spinner"></div>
+      <p>🔍 Analyzing your plant image...</p>
+    </div>
+    
+    <!-- All Diseases Information Section -->
+    <div class="diseases-section">
+      <h2>🌿 Complete Plant Disease Database</h2>
+      <div class="diseases-controls">
+        <button id="load-all-diseases-btn" class="btn btn-primary">📋 Load All Diseases</button>
+        <button id="search-plant-btn" class="btn btn-secondary">🔍 Search by Plant Type</button>
+        <input type="text" id="plant-search-input" placeholder="Enter plant type (e.g., Tomato, Apple)" style="display:none;">
+      </div>
+      <div id="diseases-display" class="diseases-display"></div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
