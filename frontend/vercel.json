@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "https://vatsal765-cropguard-plant-disease-backend.hf.space/api/:path*"
+      "source": "/api/(.*)",
+      "destination": "https://vatsal765-cropguard-plant-disease-backend.hf.space/api/$1"
     },
     {
       "source": "/(.*)",
