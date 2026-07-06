@@ -35,10 +35,10 @@ SESSION_COOKIE_SAMESITE=None
 
 Use the Supabase pooler URL for Hugging Face. The direct database host only returns an IPv6 address for this project and can fail on Hugging Face with `Network is unreachable`.
 
-Then update Vercel:
+Then update Vercel. The frontend uses `frontend/vercel.json` to proxy `/api/*` requests to the Hugging Face backend, so browser users stay on the Vercel domain and avoid cross-site CORS/session issues:
 
 ```text
-REACT_APP_API_BASE_URL=https://vatsal765-cropguard-plant-disease-backend.hf.space
+REACT_APP_API_BASE_URL=https://cropguard-plant-disease-detection.vercel.app
 ```
 
 Helper script:
@@ -73,7 +73,7 @@ EMAIL_HOST_PASSWORD=
 Set this on Vercel:
 
 ```text
-REACT_APP_API_BASE_URL=https://vatsal765-cropguard-plant-disease-backend.hf.space
+REACT_APP_API_BASE_URL=https://cropguard-plant-disease-detection.vercel.app
 ```
 
 ## Local Run

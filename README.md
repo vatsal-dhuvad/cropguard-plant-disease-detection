@@ -94,7 +94,7 @@ http://localhost:3000
 
 ### One-Command Preview Restart
 
-After the frontend has been built once, this script restarts Flask, Django, the local static frontend, and the public tunnel used by Vercel:
+After the frontend has been built once, this script restarts Flask, Django, and the local static frontend for a local preview:
 
 ```powershell
 cd "C:\Users\vatsa\OneDrive\Desktop\001 7th sem project"
@@ -115,6 +115,7 @@ Password: DemoPass123
 Recommended production setup:
 
 - Vercel hosts the React frontend.
+- Vercel also proxies `/api/*` requests to Hugging Face so registration/login cookies work from the public frontend URL.
 - Hugging Face Spaces hosts the Django backend and local Flask ML service for the zero-cost mentor demo.
 - Supabase provides the Postgres database.
 
