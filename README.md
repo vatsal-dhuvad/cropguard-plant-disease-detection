@@ -148,3 +148,5 @@ REACT_APP_API_BASE_URL
 ## Mentor Presentation Line
 
 CropGuard is an AI-based plant disease detection platform using React, Django, Flask, TensorFlow, and a trained Keras model. It detects crop disease from plant leaf images, gives confidence and treatment suggestions, and stores user-specific scan history in a dashboard.
+
+For the exact demo order and speaking script, use `PRESENTATION_GUIDE.md`.

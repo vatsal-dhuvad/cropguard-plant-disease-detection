@@ -480,7 +480,7 @@ const Detect = () => {
                 <Camera className="w-5 h-5" /> Live Camera Detection
               </h2>
               <div className="relative bg-gray-900 rounded-lg overflow-hidden flex justify-center">
-                <video ref={videoRef} autoPlay playsInline muted className="w-[600px] h-[600px] object-cover" />
+                <video ref={videoRef} autoPlay playsInline muted className="w-full max-w-[600px] aspect-square object-cover" />
                 <canvas ref={canvasRef} className="hidden" />
               </div>
               <div className="flex flex-wrap gap-4 items-center mt-4">

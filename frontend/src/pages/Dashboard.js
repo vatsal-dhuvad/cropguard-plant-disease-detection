@@ -169,7 +169,7 @@ const Dashboard = () => {
               <p className="text-sm text-gray-600">{item.crop || 'Unknown Crop'}</p>
               <div className="flex items-center space-x-2 text-sm text-gray-600">
                 <Calendar className="h-4 w-4" />
-                <span>{item.created_at}</span>
+                <span>{item.timestamp ? new Date(item.timestamp).toLocaleString() : '-'}</span>
               </div>
             </div>
           </div>
@@ -296,7 +296,7 @@ const Dashboard = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Welcome back, {user?.first_name || user?.email}! 👋
+            Welcome back, {user?.first_name || user?.email}!
           </h1>
           <p className="text-xl text-gray-600 mb-8">
             Monitor your crop health and disease detection history
