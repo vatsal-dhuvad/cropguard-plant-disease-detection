@@ -33,7 +33,7 @@ The frontend is built with React and Tailwind CSS. The main backend API is Djang
 ## 4. Architecture Line
 
 ```text
-The user interacts with the Vercel frontend. Vercel proxies API requests to the Hugging Face backend. Django handles authentication and database records. Django sends image data to the local Flask ML service inside the same backend container. The TensorFlow model returns the crop, disease, confidence score, and advice, then Django stores the result in Supabase.
+The user interacts with the Vercel frontend. Vercel proxies API requests to the Hugging Face backend. Django handles authentication and database records. Django sends image data to the local Flask ML service inside the same backend container. The TensorFlow model returns the leaf problem, confidence score, and advice, then Django stores the result in Supabase.
 ```
 
 ## 5. Live Demo Flow
@@ -65,7 +65,7 @@ This dashboard shows total scans, diseased plants, healthy plants, recent detect
 9. Show the result:
 
 ```text
-Here the model predicts the crop and disease class, confidence percentage, health status, and treatment/prevention information.
+Here the model predicts the leaf problem, confidence percentage, health status, and treatment/prevention information.
 ```
 
 10. Go back to Dashboard.

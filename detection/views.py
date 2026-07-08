@@ -177,10 +177,11 @@ def detect_disease(request):
         
         # Save detection to database (if user is authenticated)
         detection = None
+        leaf_problem = prediction_result.get('problem') or prediction_result['disease']
         if request.user.is_authenticated:
             detection = DiseaseDetection.objects.create(
                 user=request.user,
-                prediction=f"{prediction_result['crop']} - {prediction_result['disease']}",
+                prediction=f"Leaf problem - {leaf_problem}",
                 confidence=prediction_result['confidence']
             )
             
@@ -192,17 +193,18 @@ def detect_disease(request):
             UserActivity.objects.create(
                 user=request.user,
                 activity_type='detection',
-                description=f"Detected {prediction_result['disease']} in {prediction_result['crop']}",
-                crop=prediction_result['crop'],
-                disease=prediction_result['disease'],
+                description=f"Detected leaf problem: {leaf_problem}",
+                crop='Leaf problem',
+                disease=leaf_problem,
                 confidence=prediction_result['confidence']
             )
         
         response_data = {
             'message': 'Disease detection completed',
             'detection': {
-                'crop': prediction_result['crop'],
-                'disease': prediction_result['disease'],
+                'crop': 'Leaf',
+                'disease': leaf_problem,
+                'problem': leaf_problem,
                 'confidence': prediction_result['confidence'],
                 'is_healthy': prediction_result['is_healthy'],
                 'treatment': prediction_result['treatment'],
@@ -287,15 +289,17 @@ def detection_history(request):
         
         history = []
         for detection in detections:
-            # Parse prediction to extract crop and disease
+            # Parse prediction to extract the leaf problem. Older rows may
+            # contain crop names, but the UI should focus on the problem only.
             prediction_parts = detection.prediction.split(' - ', 1)
-            crop = prediction_parts[0] if len(prediction_parts) > 0 else 'Unknown'
+            crop = 'Leaf'
             disease = prediction_parts[1] if len(prediction_parts) > 1 else 'Unknown'
             
             history.append({
                 'id': detection.id,
                 'crop': crop,
                 'disease': disease,
+                'problem': disease,
                 'confidence': detection.confidence,
                 'is_healthy': 'healthy' in disease.lower(),
                 'treatment': 'Apply appropriate treatment based on disease type.',
@@ -313,8 +317,9 @@ def detection_history(request):
                 'id': activity.id,
                 'type': activity.activity_type,
                 'description': activity.description,
-                'crop': activity.crop,
+                'crop': 'Leaf' if activity.activity_type == 'detection' else activity.crop,
                 'disease': activity.disease,
+                'problem': activity.disease,
                 'confidence': activity.confidence,
                 'timestamp': activity.timestamp.isoformat()
             })

@@ -11,6 +11,15 @@ import json
 
 logger = logging.getLogger(__name__)
 
+
+def format_leaf_problem(disease):
+    """Convert a model class disease segment into user-facing leaf problem text."""
+    cleaned = str(disease or "Unknown").replace("_", " ").strip()
+    cleaned = " ".join(cleaned.split())
+    if "healthy" in cleaned.lower():
+        return "Healthy leaf"
+    return cleaned or "Unknown leaf problem"
+
 class CropDiseasePredictor:
     """
     Machine Learning Model Handler for Crop Disease Detection
@@ -237,10 +246,13 @@ class CropDiseasePredictor:
                 
                 # Determine if healthy or diseased
                 is_healthy = 'healthy' in disease.lower()
+                problem = format_leaf_problem(disease)
                 
                 return {
-                    'crop': crop,
-                    'disease': disease,
+                    'crop': 'Leaf',
+                    'raw_crop': crop,
+                    'disease': problem,
+                    'problem': problem,
                     'confidence': confidence,
                     'is_healthy': is_healthy,
                     'treatment': treatment,
@@ -284,9 +296,13 @@ class CropDiseasePredictor:
         # Get treatment from remedies map or fallback
         treatment_info = self._get_treatment_suggestion(crop, disease, is_healthy, class_name)
         
+        problem = format_leaf_problem(disease)
+
         return {
-            'crop': crop,
-            'disease': disease,
+            'crop': 'Leaf',
+            'raw_crop': crop,
+            'disease': problem,
+            'problem': problem,
             'confidence': round(confidence * 100, 2),
             'is_healthy': is_healthy,
             'treatment': treatment_info.get('treatment', ''),
@@ -312,8 +328,8 @@ class CropDiseasePredictor:
         """
         if is_healthy:
             return {
-                'treatment': f"Your {crop} plant appears to be healthy! Continue with regular care and monitoring.",
-                'description': f"The model detected that your {crop} plant is healthy.",
+                'treatment': "The leaf appears healthy. Continue regular care and monitoring.",
+                'description': "The model detected a healthy leaf.",
                 'duration': 'N/A',
                 'prevention': 'Maintain regular plant care and monitoring.'
             }
@@ -389,13 +405,13 @@ class CropDiseasePredictor:
             if disease in crop_treatments:
                 treatment = crop_treatments[disease]
             else:
-                treatment = crop_treatments.get('default', f'Apply appropriate fungicides for {crop} {disease}.')
+                treatment = crop_treatments.get('default', f'Apply appropriate treatment for {format_leaf_problem(disease)}.')
         else:
-            treatment = f'Apply appropriate fungicides for {crop} {disease}. Consult with a local agricultural expert.'
+            treatment = f'Apply appropriate treatment for {format_leaf_problem(disease)}. Consult with a local agricultural expert.'
         
         return {
             'treatment': treatment,
-            'description': f'Detected {disease} on {crop} plant.',
+            'description': f'Detected leaf problem: {format_leaf_problem(disease)}.',
             'duration': '7-14 days',
             'prevention': 'Maintain good plant hygiene and monitor regularly.'
         }

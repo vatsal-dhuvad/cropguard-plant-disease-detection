@@ -83,8 +83,7 @@ const Dashboard = () => {
       if (data.length > 0) {
         const lastDetection = data[0]; // Most recent detection
         setLastDisease({
-          disease: lastDetection.disease || 'Unknown',
-          crop: lastDetection.crop || 'Unknown Crop',
+          disease: lastDetection.problem || lastDetection.disease || 'Unknown leaf problem',
           confidence: lastDetection.confidence || 0,
           date: lastDetection.timestamp,
           treatment: getTreatmentAdvice(lastDetection.disease)
@@ -165,8 +164,8 @@ const Dashboard = () => {
               <AlertTriangle className="h-6 w-6 text-orange-600" />
             )}
             <div>
-              <h4 className="font-semibold text-gray-900">{item.disease}</h4>
-              <p className="text-sm text-gray-600">{item.crop || 'Unknown Crop'}</p>
+              <h4 className="font-semibold text-gray-900">{item.problem || item.disease}</h4>
+              <p className="text-sm text-gray-600">Leaf problem</p>
               <div className="flex items-center space-x-2 text-sm text-gray-600">
                 <Calendar className="h-4 w-4" />
                 <span>{item.timestamp ? new Date(item.timestamp).toLocaleString() : '-'}</span>
@@ -219,7 +218,7 @@ const Dashboard = () => {
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-900">
                     {isDetection 
-                      ? `${item.crop || 'Unknown Crop'} - ${item.disease}`
+                      ? `Leaf problem: ${item.problem || item.disease}`
                       : item.description
                     }
                   </p>
@@ -260,7 +259,7 @@ const Dashboard = () => {
           <div>
             <p className="text-sm text-gray-600">Last detected:</p>
             <p className="font-semibold text-gray-900">
-              {lastDisease.disease} on {lastDisease.crop}
+              {lastDisease.disease}
             </p>
             <p className="text-sm text-gray-500">{Number(lastDisease.confidence).toFixed(1)}% confidence</p>
           </div>

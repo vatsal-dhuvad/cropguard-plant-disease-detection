@@ -169,6 +169,7 @@ const Detect = () => {
       setResult({
         crop: resp.data.detection.crop,
         disease: resp.data.detection.disease,
+        problem: resp.data.detection.problem || resp.data.detection.disease,
         confidence: resp.data.detection.confidence,
         is_healthy: resp.data.detection.is_healthy,
         treatment: resp.data.detection.treatment,
@@ -205,6 +206,7 @@ const Detect = () => {
       setResult({
         crop: response.data.detection.crop,
         disease: response.data.detection.disease,
+        problem: response.data.detection.problem || response.data.detection.disease,
         confidence: response.data.detection.confidence,
         is_healthy: response.data.detection.is_healthy,
         treatment: response.data.detection.treatment,
@@ -391,7 +393,7 @@ const Detect = () => {
                       )}
                       <div>
                         <h3 className="text-xl font-semibold text-gray-900">
-                          {result.crop} - {result.disease}
+                          Leaf Problem: {result.problem || result.disease}
                         </h3>
                         <p className="text-sm text-gray-500">
                           Confidence: {result.confidence}%
@@ -517,7 +519,7 @@ const Detect = () => {
                       )}
                       <div>
                         <h3 className="text-xl font-semibold text-gray-900">
-                          {result.crop} - {result.disease}
+                          Leaf Problem: {result.problem || result.disease}
                         </h3>
                         <p className="text-sm text-gray-500">
                           Confidence: {result.confidence}%
