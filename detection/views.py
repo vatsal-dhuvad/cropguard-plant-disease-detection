@@ -211,7 +211,7 @@ def detect_disease(request):
                 'description': prediction_result.get('description', ''),
                 'duration': prediction_result.get('duration', ''),
                 'prevention': prediction_result.get('prevention', ''),
-                'class_name': prediction_result.get('class_name', ''),
+                'class_name': leaf_problem,
             }
         }
         
